@@ -285,7 +285,13 @@ namespace Breeze
         const int height = maximized ? borderTop() : borderTop() - borderSize();
         const int x = borderSize();
         const int y = maximized ? 0 : borderSize();
+
+        // blur
+        // https://psifidotos.blogspot.com/2022/03/kornersfix.html
+        this->setBlurRegion(QRegion(QRect(x, y, width, height)));
+
         setTitleBar(QRect(x, y, width, height));
+
     }
 
     //________________________________________________________________
