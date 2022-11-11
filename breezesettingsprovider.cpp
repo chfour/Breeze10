@@ -33,7 +33,7 @@ namespace Breeze
 
     //__________________________________________________________________
     SettingsProvider::SettingsProvider():
-        m_config( KSharedConfig::openConfig( QStringLiteral("breezerc") ) )
+        m_config( KSharedConfig::openConfig( QStringLiteral("breeze10rc") ) )
     { reconfigure(); }
 
     //__________________________________________________________________
