@@ -50,6 +50,8 @@ namespace Breeze
         connect( m_ui.buttonSize, SIGNAL(currentIndexChanged(int)), SLOT(updateChanged()) );
         connect( m_ui.drawBorderOnMaximizedWindows, SIGNAL(clicked()), SLOT(updateChanged()) );
         connect( m_ui.drawSizeGrip, SIGNAL(clicked()), SLOT(updateChanged()) );
+
+        connect( m_ui.closeHoverColor, SIGNAL(changed(QColor)), SLOT(updateChanged()) );
         connect( m_ui.opacitySpinBox, QOverload<int>::of(&QSpinBox::valueChanged), [=](int /*i*/){updateChanged();} );
 
         connect( m_ui.fontComboBox, &QFontComboBox::currentFontChanged, [this] { updateChanged(); } );
@@ -86,6 +88,8 @@ namespace Breeze
         m_ui.drawSizeGrip->setChecked( m_internalSettings->drawSizeGrip() );
         m_ui.animationsEnabled->setChecked( m_internalSettings->animationsEnabled() );
         m_ui.animationsDuration->setValue( m_internalSettings->animationsDuration() );
+
+        m_ui.closeHoverColor->setColor( m_internalSettings->closeHoverColor() );
         m_ui.opacitySpinBox->setValue( m_internalSettings->backgroundOpacity() );
 
         QString fontStr = m_internalSettings->titleBarFont();
@@ -147,6 +151,8 @@ namespace Breeze
         m_internalSettings->setDrawSizeGrip( m_ui.drawSizeGrip->isChecked() );
         m_internalSettings->setAnimationsEnabled( m_ui.animationsEnabled->isChecked() );
         m_internalSettings->setAnimationsDuration( m_ui.animationsDuration->value() );
+
+        m_internalSettings->setCloseHoverColor(m_ui.closeHoverColor->color());
         m_internalSettings->setBackgroundOpacity(m_ui.opacitySpinBox->value());
 
         QFont f = m_ui.fontComboBox->currentFont();

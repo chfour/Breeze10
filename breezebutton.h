@@ -125,6 +125,8 @@ namespace Breeze
         //* active state change animation
         QPropertyAnimation *m_animation;
 
+        QColor m_hoverColor;
+
         //* vertical offset (for rendering)
         QPointF m_offset;
 

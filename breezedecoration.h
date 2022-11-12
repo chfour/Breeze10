@@ -87,6 +87,7 @@ namespace Breeze
         QColor titleBarColor() const;
         QColor outlineColor() const;
         QColor fontColor() const;
+        QColor closeButtonColor() const;
         //@}
 
         //*@name maximization modes

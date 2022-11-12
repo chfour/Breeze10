@@ -218,6 +218,13 @@ namespace Breeze
 
     }
 
+    QColor Decoration::closeButtonColor() const
+    {
+
+        return m_internalSettings->closeHoverColor();
+
+    }
+
     //________________________________________________________________
     void Decoration::init()
     {

@@ -40,6 +40,8 @@ namespace Breeze
         , m_animation( new QPropertyAnimation( this ) )
     {
 
+        auto m_hoverColor = QColor(0, 0, 0);
+
         // setup animation
         m_animation->setStartValue( 0 );
         m_animation->setEndValue( 1.0 );
@@ -473,7 +475,7 @@ namespace Breeze
 
         if( isPressed() ) {
 
-            if( type() == DecorationButtonType::Close ) return KColorUtils::mix( Qt::red, Qt::black, 0.3 );
+            if( type() == DecorationButtonType::Close ) return KColorUtils::mix( d->closeButtonColor(), Qt::black, 0.3 );
             else return KColorUtils::mix( d->titleBarColor(), d->fontColor(), 0.3 );
 
         } else if( ( type() == DecorationButtonType::KeepBelow || type() == DecorationButtonType::KeepAbove ) && isChecked() ) {
@@ -482,7 +484,7 @@ namespace Breeze
 
         } else if( m_animation->state() == QPropertyAnimation::Running ) {
 
-            if( type() == DecorationButtonType::Close ) return KColorUtils::mix( d->titleBarColor(), Qt::red, m_opacity );
+            if( type() == DecorationButtonType::Close ) return KColorUtils::mix( d->titleBarColor(), d->closeButtonColor(), m_opacity );
             else {
 
                 QColor color( KColorUtils::mix( d->titleBarColor(), d->fontColor(), 0.2 ) );
@@ -493,7 +495,7 @@ namespace Breeze
 
         } else if( isHovered() ) {
 
-            if( type() == DecorationButtonType::Close ) return Qt::red;
+            if( type() == DecorationButtonType::Close ) return d->closeButtonColor();
             else return KColorUtils::mix( d->titleBarColor(), d->fontColor(), 0.2 );
 
         } else {
