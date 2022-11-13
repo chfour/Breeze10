@@ -484,7 +484,7 @@ namespace Breeze
 
         } else if( m_animation->state() == QPropertyAnimation::Running ) {
 
-            if( type() == DecorationButtonType::Close ) return KColorUtils::mix( d->titleBarColor(), d->closeButtonColor(), m_opacity );
+            if( type() == DecorationButtonType::Close ) return KColorUtils::mix( Qt::transparent, d->closeButtonColor(), m_opacity );
             else {
 
                 QColor color( KColorUtils::mix( d->titleBarColor(), d->fontColor(), 0.2 ) );
